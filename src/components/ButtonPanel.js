@@ -1,8 +1,9 @@
 import React from 'react';
+import PropType from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = () => (
-  <>
+const ButtonPanel = ({ id }) => (
+  <div id={id}>
     <div>
       <Button>AC</Button>
       <Button>+/</Button>
@@ -32,7 +33,9 @@ const ButtonPanel = () => (
       <Button>.</Button>
       <Button>=</Button>
     </div>
-  </>
+  </div>
 );
+
+ButtonPanel.propTypes = { id: PropType.string.isRequired };
 
 export default ButtonPanel;
