@@ -1,41 +1,31 @@
 import React from 'react';
-import PropType from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = () => (
-  <div>
-    <div>
-      <Button>AC</Button>
-      <Button>+/</Button>
-      <Button>%</Button>
-      <Button>÷</Button>
-    </div>
-    <div>
-      <Button>7</Button>
-      <Button>8</Button>
-      <Button>9</Button>
-      <Button>X</Button>
-    </div>
-    <div>
-      <Button>4</Button>
-      <Button>5</Button>
-      <Button>6</Button>
-      <Button>-</Button>
-    </div>
-    <div>
-      <Button>1</Button>
-      <Button>2</Button>
-      <Button>3</Button>
-      <Button>+</Button>
-    </div>
-    <div>
-      <Button>0</Button>
-      <Button>.</Button>
-      <Button>=</Button>
-    </div>
-  </div>
-);
+const ButtonPanel = () => {
+  const buttonNames = {
+    0: ['AC', '+/', '%', '÷'],
+    1: ['7', '8', '9', 'X'],
+    2: ['4', '5', '6', '-'],
+    3: ['1', '2', '3', '+'],
+    4: ['0', '.', '='],
+  };
 
-ButtonPanel.propTypes = { id: PropType.string.isRequired };
+  const renderedButtons = [];
+  Object
+    .keys(buttonNames)
+    .forEach(rowKey => {
+      renderedButtons.push(
+        <div key={rowKey}>
+          { buttonNames[rowKey].map(btnName => <Button key={btnName} buttonName={btnName} />) }
+        </div>,
+      );
+    });
+
+  return (
+    <div>
+      { renderedButtons }
+    </div>
+  );
+};
 
 export default ButtonPanel;
