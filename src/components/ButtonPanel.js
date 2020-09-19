@@ -2,8 +2,8 @@ import React from 'react';
 import PropType from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = ({ id }) => (
-  <div id={id}>
+const ButtonPanel = () => (
+  <div>
     <div>
       <Button>AC</Button>
       <Button>+/</Button>
