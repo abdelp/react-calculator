@@ -1,10 +1,10 @@
 import React from 'react';
 import PropType from 'prop-types';
 
-const Button = ({ children }) => (
-  <button type="button">{children}</button>
+const Button = ({ buttonName }) => (
+  <button type="button">{buttonName}</button>
 );
 
-Button.propTypes = { children: PropType.string.isRequired };
+Button.propTypes = { buttonName: PropType.string.isRequired };
 
 export default Button;
