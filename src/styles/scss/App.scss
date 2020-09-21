@@ -12,6 +12,16 @@
 
   .btn-panel {
     flex-direction: column;
+
+    .btn {
+      width: 25%;
+      height: 100%;
+      border: 1px solid black;
+    }
+
+    .btn-group:last-child .btn:first-child {
+      width: 50%;
+    }
   }
 
   .display,
@@ -23,12 +33,9 @@
     background-color: gray;
     color: white;
     font-weight: bold;
+    font-size: xxx-large;
     padding: 5px 10px;
     justify-content: flex-end;
-  }
-
-  .btn-panel {
-
   }
 }
 
