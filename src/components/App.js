@@ -6,8 +6,8 @@ import ButtonPanel from './ButtonPanel';
 function App() {
   return (
     <div className="App">
-      <Display id="display" result="" />
-      <ButtonPanel id="btn-panel" />
+      <Display result="0" />
+      <ButtonPanel />
     </div>
   );
 }

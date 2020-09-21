@@ -22,7 +22,7 @@ const ButtonPanel = () => {
     });
 
   return (
-    <div>
+    <div className="btn-panel">
       { renderedButtons }
     </div>
   );

@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  display: flex;
+  width: 700px;
+
+  .display,
+  .btn-panel {
+    display: flex;
+    width: 100%;
+  }
 }
 
 .App-logo {
