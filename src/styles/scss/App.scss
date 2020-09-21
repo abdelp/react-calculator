@@ -2,6 +2,7 @@
   text-align: center;
   display: flex;
   width: 700px;
+  flex-direction: column;
 
   .display,
   .btn-panel {
@@ -9,13 +10,25 @@
     width: 100%;
   }
 
+  .btn-panel {
+    flex-direction: column;
+  }
+
+  .display,
+  .btn-group {
+    height: 100px;
+  }
+
   .display {
     background-color: gray;
-    height: 100px;
     color: white;
     font-weight: bold;
     padding: 5px 10px;
     justify-content: flex-end;
+  }
+
+  .btn-panel {
+
   }
 }
 

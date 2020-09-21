@@ -15,7 +15,7 @@ const ButtonPanel = () => {
     .keys(buttonNames)
     .forEach(rowKey => {
       renderedButtons.push(
-        <div key={rowKey}>
+        <div key={rowKey} class="btn-group">
           { buttonNames[rowKey].map(btnName => <Button key={btnName} buttonName={btnName} />) }
         </div>,
       );
