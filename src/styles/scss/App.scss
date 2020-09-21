@@ -8,6 +8,15 @@
     display: flex;
     width: 100%;
   }
+
+  .display {
+    background-color: gray;
+    height: 100px;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    justify-content: flex-end;
+  }
 }
 
 .App-logo {
