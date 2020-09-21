@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  display: flex;
+  width: 700px;
+  flex-direction: column;
+  margin: 0 auto;
+
+  .display,
+  .btn-panel {
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-panel {
+    flex-direction: column;
+
+    .btn {
+      width: 25%;
+      height: 100%;
+      border: 1px solid black;
+      font-size: large;
+    }
+
+    .btn-wide {
+      width: 50%;
+    }
+  }
+
+  .display,
+  .btn-group {
+    height: 100px;
+  }
+
+  .display {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    font-size: xxx-large;
+    padding: 0 10px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.btn-orange {
+  background-color: orange;
+}
+
+.btn-lightgray {
+  background-color: lightgray;
+}
