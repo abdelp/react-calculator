@@ -19,7 +19,7 @@ const ButtonPanel = () => {
       { name: '2', color: 'lightgray' },
       { name: '3', color: 'lightgray' },
       { name: '+' }],
-    4: [{ name: '0', color: 'lightgray' },
+    4: [{ name: '0', color: 'lightgray', wide: true },
       { name: '.', color: 'lightgray' },
       { name: '=' }],
   };
@@ -35,6 +35,7 @@ const ButtonPanel = () => {
               key={btnProp.name}
               buttonName={btnProp.name}
               color={btnProp.color}
+              wide={btnProp.wide}
             />
           )) }
         </div>,
