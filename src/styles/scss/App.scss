@@ -3,6 +3,7 @@
   display: flex;
   width: 700px;
   flex-direction: column;
+  margin: 0 auto;
 
   .display,
   .btn-panel {
@@ -17,6 +18,7 @@
       width: 25%;
       height: 100%;
       border: 1px solid black;
+      font-size: large;
     }
 
     .btn-group:last-child .btn:first-child {
