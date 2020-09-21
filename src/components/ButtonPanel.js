@@ -4,7 +4,7 @@ import Button from './Button';
 const ButtonPanel = () => {
   const btnProps = {
     0: [{ name: 'AC', color: 'lightgray' },
-      { name: '+/', color: 'lightgray' },
+      { name: '+/-', color: 'lightgray' },
       { name: '%', color: 'lightgray' },
       { name: '÷' }],
     1: [{ name: '7', color: 'lightgray' },
