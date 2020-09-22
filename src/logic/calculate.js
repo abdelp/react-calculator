@@ -1,14 +1,20 @@
 import PropType from 'prop-types';
 import operate from './operate';
 
+const removeLeadingZero = (amount) =>
+  `${amount || ''}`.replace(/^0$/, '');
+
 const calculate = (data, buttonName) => {
-  if (data.total === 'ERROR' && buttonName !== 'AC') return;
+  if (data.total === 'ERROR' && !buttonName.match(/\d/)) return data;
+
   let dataUpdated = {...data};
+  if (dataUpdated.total === 'ERROR') dataUpdated.total = null;
+
   const prop = data.operator ? 'next' : 'total';
 
   if (buttonName.match(/\d/)) {
-    dataUpdated[prop] = `${data[prop] || ''}`.replace(/^0[^\.]/, '') + buttonName;
-  } else if (['+', '-', 'X', '÷'].includes(buttonName)) {
+    dataUpdated[prop] = removeLeadingZero(dataUpdated[prop]) + buttonName;
+  } else if (['+', '-', 'X', '÷', '%'].includes(buttonName)) {
     if(data.next) {
       dataUpdated = {
         total: operate(data.total, data.next, data.operator),
@@ -18,24 +24,16 @@ const calculate = (data, buttonName) => {
     } else if (data.total) {
       dataUpdated.operator = buttonName;
     }
-  } else if (buttonName === '%') {
-    if (!Number(data.next)) dataUpdated.next = 1;
-
-    dataUpdated = {
-      total: operate(dataUpdated.total, dataUpdated.next, buttonName),
-      next: null,
-      operator: buttonName
-    };
   } else if (buttonName === '.') {
-    if (dataUpdated[prop].indexOf('.') === -1) {
+    if (!dataUpdated[prop]) dataUpdated[prop] = '0';
+    if (dataUpdated[prop].indexOf('.') === -1)
       dataUpdated[prop] = `${dataUpdated[prop]}.`;
-    }
   } else if (buttonName === '=') {
-    if (dataUpdated['next']) {
+    if (dataUpdated['next'] || dataUpdated['operator'] === '%')
       dataUpdated = {
-        total: operate(dataUpdated.total, dataUpdated.next, dataUpdated.operator)
+        total: operate(dataUpdated.total, dataUpdated.next || 1, dataUpdated.operator)
       };
-    }
+
     dataUpdated.operator = null;
     dataUpdated.next = null;
   } else if (buttonName === 'AC') {
