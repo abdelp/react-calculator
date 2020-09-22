@@ -17,7 +17,7 @@ const operate = (numberOne, numberTwo, operation) => {
 
     return Number(result);
   } catch(e) {
-    return Error(e);
+    return 'ERROR';
   }
 };
 
