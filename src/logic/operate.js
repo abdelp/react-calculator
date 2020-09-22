@@ -2,21 +2,21 @@ import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
   try {
-    numberOne = Big(numberOne);
-    numberTwo = Big(numberTwo);
+    const bigOne = Big(numberOne);
+    const bigTwo = Big(numberTwo);
 
     const operators = {
-      '+': numberOne.plus.bind(numberOne),
-      '-': numberOne.minus.bind(numberOne),
-      'X': numberOne.times.bind(numberOne),
-      '÷': numberOne.div.bind(numberOne),
-      '%': (numberTwo) => numberOne.times(numberTwo) / 100
+      '+': bigOne.plus.bind(bigOne),
+      '-': bigOne.minus.bind(bigOne),
+      X: bigOne.times.bind(bigOne),
+      '÷': bigOne.div.bind(bigOne),
+      '%': bigTwo => bigOne.times(bigTwo) / 100,
     };
 
-    const result = operators[operation](numberTwo);
+    const result = operators[operation](bigTwo);
 
     return Number(result);
-  } catch(e) {
+  } catch (e) {
     return 'ERROR';
   }
 };

@@ -1,13 +1,12 @@
 import PropType from 'prop-types';
 import operate from './operate';
 
-const removeLeadingZero = (amount) =>
-  `${amount || ''}`.replace(/^0$/, '');
+const removeLeadingZero = amount => `${amount || ''}`.replace(/^0$/, '');
 
 const calculate = (data, buttonName) => {
   if (data.total === 'ERROR' && !buttonName.match(/\d/)) return data;
 
-  let dataUpdated = {...data};
+  let dataUpdated = { ...data };
   if (dataUpdated.total === 'ERROR') dataUpdated.total = null;
 
   const prop = data.operator ? 'next' : 'total';
@@ -15,24 +14,24 @@ const calculate = (data, buttonName) => {
   if (buttonName.match(/\d/)) {
     dataUpdated[prop] = removeLeadingZero(dataUpdated[prop]) + buttonName;
   } else if (['+', '-', 'X', '÷', '%'].includes(buttonName)) {
-    if(data.next) {
+    if (data.next) {
       dataUpdated = {
         total: operate(data.total, data.next, data.operator),
         next: null,
-        operator: buttonName
+        operator: buttonName,
       };
     } else if (data.total) {
       dataUpdated.operator = buttonName;
     }
   } else if (buttonName === '.') {
     if (!dataUpdated[prop]) dataUpdated[prop] = '0';
-    if (dataUpdated[prop].indexOf('.') === -1)
-      dataUpdated[prop] = `${dataUpdated[prop]}.`;
+    if (dataUpdated[prop].indexOf('.') === -1) { dataUpdated[prop] = `${dataUpdated[prop]}.`; }
   } else if (buttonName === '=') {
-    if (dataUpdated['next'] || dataUpdated['operator'] === '%')
+    if (dataUpdated.next || dataUpdated.operator === '%') {
       dataUpdated = {
-        total: operate(dataUpdated.total, dataUpdated.next || 1, dataUpdated.operator)
+        total: operate(dataUpdated.total, dataUpdated.next || 1, dataUpdated.operator),
       };
+    }
 
     dataUpdated.operator = null;
     dataUpdated.next = null;
@@ -40,7 +39,7 @@ const calculate = (data, buttonName) => {
     dataUpdated = {
       total: null,
       next: null,
-      operator: null
+      operator: null,
     };
   }
 
@@ -51,9 +50,9 @@ calculate.propType = {
   data: {
     total: PropType.number,
     next: PropType.number,
-    operation: PropType.string
+    operation: PropType.string,
   },
-  buttonName: PropType.string.isRequired
+  buttonName: PropType.string.isRequired,
 };
 
 export default calculate;
