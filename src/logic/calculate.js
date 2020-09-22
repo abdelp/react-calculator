@@ -35,6 +35,8 @@ const calculate = (data, buttonName) => {
 
     dataUpdated.operator = null;
     dataUpdated.next = null;
+  } else if (buttonName === '+/-') {
+    if (dataUpdated[prop]) dataUpdated[prop] = operate(dataUpdated[prop], -1, 'X');
   } else if (buttonName === 'AC') {
     dataUpdated = {
       total: null,
