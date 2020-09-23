@@ -18,10 +18,13 @@ Button.propTypes = {
   buttonName: PropType.string.isRequired,
   color: PropType.string,
   wide: PropType.bool,
+  onClick: PropType.func,
 };
 
 Button.defaultProps = {
   color: 'orange',
   wide: false,
+  onClick: null,
 };
+
 export default Button;
