@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/scss/App.scss';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
-import calculate from '../logic/calculate'; // eslint-disable-line no-unused-vars
+import calculate from '../logic/calculate';
 
 class App extends React.Component {
   constructor() {
@@ -10,12 +10,19 @@ class App extends React.Component {
     this.state = {total: null,
                   next: null,
                   operation: null};
+    this.handleClick = this.handleClick.bind(this);
   }
 
+  handleClick(buttonName) {
+    this.setState(state => calculate(state, buttonName));
+  };
+
   render () {
+    const { total, next, operation } = this.state;
+
     return <div className="App">
-      <Display result="0" />
-      <ButtonPanel />
+      <Display result={next || operation || total || '0'} />
+      <ButtonPanel clickHandler={this.handleClick} />
     </div>;
   }
 }
