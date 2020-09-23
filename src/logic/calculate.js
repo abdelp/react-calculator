@@ -3,7 +3,7 @@ import operate from './operate';
 
 const removeLeadingZero = amount => `${amount || ''}`.replace(/^0$/, '');
 
-const resetedData = () => ({total: null, next: null, operator: null});
+const resetedData = () => ({ total: null, next: null, operator: null });
 
 const calculate = (data, buttonName) => {
   if (data.total === 'ERROR' && !buttonName.match(/\d/)) return data;
