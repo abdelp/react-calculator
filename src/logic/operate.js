@@ -15,7 +15,7 @@ const operate = (numberOne, numberTwo, operation) => {
 
     const result = operators[operation](bigTwo);
 
-    return Number(result);
+    return String(Number(result));
   } catch (e) {
     return 'ERROR';
   }

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropType from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = () => {
+const ButtonPanel = ({ clickHandler }) => {
   const btnProps = {
     0: [{ name: 'AC', color: 'lightgray' },
       { name: '+/-', color: 'lightgray' },
@@ -36,6 +37,7 @@ const ButtonPanel = () => {
               buttonName={btnProp.name}
               color={btnProp.color}
               wide={btnProp.wide}
+              onClick={clickHandler}
             />
           )) }
         </div>,
@@ -47,6 +49,14 @@ const ButtonPanel = () => {
       { renderedButtons }
     </div>
   );
+};
+
+ButtonPanel.propTypes = {
+  clickHandler: PropType.func,
+};
+
+ButtonPanel.defaultProps = {
+  clickHandler: null,
 };
 
 export default ButtonPanel;

@@ -3,7 +3,7 @@ import operate from './operate';
 
 const removeLeadingZero = amount => `${amount || ''}`.replace(/^0$/, '');
 
-const resetedData = () => ({ total: null, next: null, operator: null });
+const resetedData = () => ({ total: null, next: null, operation: null });
 
 const calculate = (data, buttonName) => {
   if (data.total === 'ERROR' && !buttonName.match(/\d/)) return data;
@@ -11,31 +11,31 @@ const calculate = (data, buttonName) => {
   let dataUpdated = { ...data };
   if (dataUpdated.total === 'ERROR') dataUpdated = resetedData();
 
-  const prop = data.operator ? 'next' : 'total';
+  const prop = data.operation ? 'next' : 'total';
 
   if (buttonName.match(/\d/)) {
     dataUpdated[prop] = removeLeadingZero(dataUpdated[prop]) + buttonName;
   } else if (['+', '-', 'X', '÷', '%'].includes(buttonName)) {
     if (data.next) {
       dataUpdated = {
-        total: operate(data.total, data.next, data.operator),
+        total: operate(data.total, data.next, data.operation),
         next: null,
-        operator: null,
+        operation: null,
       };
     } else if (data.total) {
-      dataUpdated.operator = buttonName;
+      dataUpdated.operation = buttonName;
     }
   } else if (buttonName === '.') {
     if (!dataUpdated[prop]) dataUpdated[prop] = '0';
     if (dataUpdated[prop].indexOf('.') === -1) { dataUpdated[prop] = `${dataUpdated[prop]}.`; }
   } else if (buttonName === '=') {
-    if (dataUpdated.next || dataUpdated.operator === '%') {
+    if (dataUpdated.next || dataUpdated.operation === '%') {
       dataUpdated = {
-        total: operate(dataUpdated.total, dataUpdated.next || 1, dataUpdated.operator),
+        total: operate(dataUpdated.total, dataUpdated.next || 1, dataUpdated.operation),
       };
     }
 
-    dataUpdated.operator = null;
+    dataUpdated.operation = null;
     dataUpdated.next = null;
   } else if (buttonName === '+/-') {
     if (dataUpdated[prop]) dataUpdated[prop] = operate(dataUpdated[prop], -1, 'X');
