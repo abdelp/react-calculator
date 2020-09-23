@@ -3,11 +3,13 @@ import operate from './operate';
 
 const removeLeadingZero = amount => `${amount || ''}`.replace(/^0$/, '');
 
+const resetedData = () => ({total: null, next: null, operator: null});
+
 const calculate = (data, buttonName) => {
   if (data.total === 'ERROR' && !buttonName.match(/\d/)) return data;
 
   let dataUpdated = { ...data };
-  if (dataUpdated.total === 'ERROR') dataUpdated.total = null;
+  if (dataUpdated.total === 'ERROR') dataUpdated = resetedData();
 
   const prop = data.operator ? 'next' : 'total';
 
@@ -18,7 +20,7 @@ const calculate = (data, buttonName) => {
       dataUpdated = {
         total: operate(data.total, data.next, data.operator),
         next: null,
-        operator: buttonName,
+        operator: null,
       };
     } else if (data.total) {
       dataUpdated.operator = buttonName;
@@ -38,11 +40,7 @@ const calculate = (data, buttonName) => {
   } else if (buttonName === '+/-') {
     if (dataUpdated[prop]) dataUpdated[prop] = operate(dataUpdated[prop], -1, 'X');
   } else if (buttonName === 'AC') {
-    dataUpdated = {
-      total: null,
-      next: null,
-      operator: null,
-    };
+    dataUpdated = resetedData();
   }
 
   return dataUpdated;
