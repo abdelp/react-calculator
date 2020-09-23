@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const ButtonPanel = ({clickHandler}) => {
+const ButtonPanel = ({ clickHandler }) => {
   const btnProps = {
     0: [{ name: 'AC', color: 'lightgray' },
       { name: '+/-', color: 'lightgray' },

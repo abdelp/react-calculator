@@ -7,23 +7,27 @@ import calculate from '../logic/calculate';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {total: null,
-                  next: null,
-                  operation: null};
+    this.state = {
+      total: null,
+      next: null,
+      operation: null,
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(buttonName) {
     this.setState(state => calculate(state, buttonName));
-  };
+  }
 
-  render () {
+  render() {
     const { total, next, operation } = this.state;
 
-    return <div className="App">
-      <Display result={next || operation || total || '0'} />
-      <ButtonPanel clickHandler={this.handleClick} />
-    </div>;
+    return (
+      <div className="App">
+        <Display result={next || operation || total || '0'} />
+        <ButtonPanel clickHandler={this.handleClick} />
+      </div>
+    );
   }
 }
 
