@@ -4,13 +4,13 @@ import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import calculate from '../logic/calculate'; // eslint-disable-line no-unused-vars
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+  render () {
+    return <div className="App">
       <Display result="0" />
       <ButtonPanel />
-    </div>
-  );
+    </div>;
+  }
 }
 
 export default App;
