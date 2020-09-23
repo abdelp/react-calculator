@@ -24,6 +24,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <h1>React Calculator</h1>
         <Display result={next || operation || total || '0'} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>

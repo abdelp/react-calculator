@@ -4,6 +4,7 @@
   width: 700px;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 20px;
 
   .display,
   .btn-panel {
@@ -17,8 +18,12 @@
     .btn {
       width: 25%;
       height: 100%;
-      border: 1px solid black;
+      border: 1px solid #7c7c7c;
       font-size: large;
+    }
+
+    .btn:hover {
+      cursor: pointer;
     }
 
     .btn-wide {
@@ -39,6 +44,7 @@
     padding: 0 10px;
     justify-content: flex-end;
     align-items: center;
+    border-radius: 5px 5px 0 0;
   }
 }
 
@@ -46,6 +52,14 @@
   background-color: orange;
 }
 
+.btn-orange:hover {
+  background-color: darkorange;
+}
+
 .btn-lightgray {
-  background-color: lightgray;
+  background-color: rgb(220,220,220);
+}
+
+.btn-lightgray:hover {
+  background-color: 	rgb(200,200,200);
 }
