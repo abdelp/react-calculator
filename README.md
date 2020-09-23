@@ -51,7 +51,7 @@ npm start
 
 ### Deployment
 
-To deploy to Heroku you need to create the repo:
+To deploy to Heroku, you need to create the repo:
 
 ```
 heroku create -b https://github.com/mars/create-react-app-buildpack.git
