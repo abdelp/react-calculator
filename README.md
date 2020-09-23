@@ -1,8 +1,6 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# React Calculator
 
-# Project Name
-
-> One paragraph statement about the project.
+> A Calculator App built with React.
 
 ![screenshot](./app_screenshot.png)
 
@@ -10,36 +8,62 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- React
+- HTML
+- SASS
+- Heroku
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://stark-anchorage-26487.herokuapp.com/)
 
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+- npm
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
 ### Setup
+
+Clone or download the repo:
+
+```
+git clone https://github.com/abdelp/react-calculator.git
+```
 
 ### Install
 
+Go to the root directory of the repo and install the npm packages:
+
+```
+npm i
+```
+
 ### Usage
 
-### Run tests
+To start the server you just need to run the start script:
+
+```
+npm start
+```
 
 ### Deployment
 
+To deploy to Heroku you need to create the repo:
 
+```
+heroku create -b https://github.com/mars/create-react-app-buildpack.git
+```
+
+And push the project to it:
+
+```
+git push heroku master
+```
 
 ## Author
 
